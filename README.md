@@ -66,7 +66,18 @@ Instead of relying on unit tests alone, the system includes a **full‑day OPD s
 This validates **system invariants**, not just code paths.
 
 ---
+### Technology Stack
+| Layer             | Technology           | Reason                                                       |
+| ----------------- | -------------------- | ------------------------------------------------------------ |
+| **Language**      | TypeScript           | Compile-time safety, clarity, and self-documenting APIs      |
+| **API**           | Express              | Predictable, minimal, and battle-tested — boring is good     |
+| **Database**      | PostgreSQL           | Strong transactions, row-level locks, and concurrency safety |
+| **ORM**           | Prisma               | Type-safe queries and explicit transactional workflows       |
+| **Validation**    | Zod                  | Runtime validation aligned with TypeScript types             |
+| **Time Handling** | UTC only             | Eliminates timezone-related bugs                             |
+| **Logging**       | Structured JSON logs | Auditable, searchable, and production-ready                  |
 
+---
 ## Architecture Overview
 
 ```
