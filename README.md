@@ -351,7 +351,7 @@ Verify:
 <img width="1524" height="369" alt="Screenshot 2026-01-30 142353" src="https://github.com/user-attachments/assets/20011009-fc24-4cb2-b499-2fbf9d0d93f9" />
 http://localhost:5555/  ( Prisma Studio Models)
 <img width="290" height="390" alt="Screenshot 2026-01-30 142239" src="https://github.com/user-attachments/assets/0759c7a4-bddc-4a15-b481-8477121fc8a5" />
-Token
+Token 
 <img width="1919" height="348" alt="Screenshot 2026-01-30 142308" src="https://github.com/user-attachments/assets/68aa6dba-92d6-452a-90a8-15942d8581ee" />
 Slot
 <img width="1919" height="1024" alt="Screenshot 2026-01-30 142338" src="https://github.com/user-attachments/assets/6cd2333f-f7ce-47c4-963a-3b37f414e7f9" />
