@@ -157,7 +157,7 @@ PostgreSQL
       │   ├── utils/
       │   │   ├── time.ts
       │   │   └── logger.ts
-      │   │   └── 
+      │   │   └── validators
       
       │   ├── app.ts
       │   └── server.ts
