@@ -325,6 +325,23 @@ Verify:
 * Audit logs
 * Final queue ordering
 
+## 6.Postman API Testing
+
+      1. Import the Postman collection:
+         - Open Postman → File → Import → Choose `MyAPI.postman_collection.json`
+      
+      2. Test endpoints:
+      
+      Example: Login API
+      - **URL:** `POST /api/login`
+      - **Headers:** `Content-Type: application/json`
+      - **Body:**
+      
+      {
+        "email": "test@example.com",
+        "password": "password123"
+      }
+
 ---
 ## System Verification & Outputs
 <img width="1551" height="961" alt="Screenshot 2026-01-30 142054" src="https://github.com/user-attachments/assets/705a6b22-50a5-4786-9135-101ae26383aa" />
