@@ -100,61 +100,61 @@ PostgreSQL
 
 ## FOLDER STRUCTURE
 
-opd-token-engine/
-│
-├── src/
-│   ├── config/
-│   │   ├── env.ts
-│   │   └── database.ts
-│   │
-│   ├── domain/
-│   │   ├── enums/
-│   │   │   ├── TokenPriority.ts
-│   │   │   ├── TokenStatus.ts
-│   │   │   └── SlotStatus.ts
-│   │   │
-│   │   ├── entities/
-│   │   │   ├── Doctor.ts
-│   │   │   ├── Slot.ts
-│   │   │   ├── Token.ts
-│   │   │   └── Patient.ts
-│   │   │
-│   │   └── rules/
-│   │       └── TokenAllocationRule.ts
-│   │
-│   ├── repositories/
-│   │   ├── DoctorRepository.ts
-│   │   ├── SlotRepository.ts
-│   │   └── TokenRepository.ts
-│   │
-│   ├── services/
-│   │   ├── TokenAllocationService.ts
-│   │   ├── ReallocationService.ts
-│   │   └── SimulationService.ts
-│   │
-│   ├── controllers/
-│   │   ├── DoctorController.ts
-│   │   ├── SlotController.ts
-│   │   └── TokenController.ts
-│   │
-│   ├── routes/
-│   │   └── index.ts
-│   │
-│   ├── utils/
-│   │   ├── time.ts
-│   │   └── logger.ts
-│   │   └── 
-
-│   ├── app.ts
-│   └── server.ts
-│
-├── prisma/
-│   ├── schema.prisma
-│   └── migrations/
-│
-├── .env.example
-├── package.json
-└── README.md
+      opd-token-engine/
+      │
+      ├── src/
+      │   ├── config/
+      │   │   ├── env.ts
+      │   │   └── database.ts
+      │   │
+      │   ├── domain/
+      │   │   ├── enums/
+      │   │   │   ├── TokenPriority.ts
+      │   │   │   ├── TokenStatus.ts
+      │   │   │   └── SlotStatus.ts
+      │   │   │
+      │   │   ├── entities/
+      │   │   │   ├── Doctor.ts
+      │   │   │   ├── Slot.ts
+      │   │   │   ├── Token.ts
+      │   │   │   └── Patient.ts
+      │   │   │
+      │   │   └── rules/
+      │   │       └── TokenAllocationRule.ts
+      │   │
+      │   ├── repositories/
+      │   │   ├── DoctorRepository.ts
+      │   │   ├── SlotRepository.ts
+      │   │   └── TokenRepository.ts
+      │   │
+      │   ├── services/
+      │   │   ├── TokenAllocationService.ts
+      │   │   ├── ReallocationService.ts
+      │   │   └── SimulationService.ts
+      │   │
+      │   ├── controllers/
+      │   │   ├── DoctorController.ts
+      │   │   ├── SlotController.ts
+      │   │   └── TokenController.ts
+      │   │
+      │   ├── routes/
+      │   │   └── index.ts
+      │   │
+      │   ├── utils/
+      │   │   ├── time.ts
+      │   │   └── logger.ts
+      │   │   └── 
+      
+      │   ├── app.ts
+      │   └── server.ts
+      │
+      ├── prisma/
+      │   ├── schema.prisma
+      │   └── migrations/
+      │
+      ├── .env.example
+      ├── package.json
+      └── README.md
 
 
 ---
@@ -207,30 +207,30 @@ These rules are enforced **inside a single transaction**.
 
 ## ALGORITHM
 
-BEGIN TRANSACTION
-
-LOCK slot row
-
-activeTokens = fetch ACTIVE tokens for slot
-if EMERGENCY:
-    if activeTokens.count >= capacity:
-        lowest = find lowest priority token
-        DISPLACE lowest
-    INSERT emergency token
-else:
-    if activeTokens.count < capacity:
-        INSERT token
-    else:
-        lowest = find lowest priority token
-        if new.priority > lowest.priority:
-            DISPLACE lowest
-            INSERT token
-        else:
-            REJECT allocation
-
-LOG all actions
-
-COMMIT
+      BEGIN TRANSACTION
+      
+      LOCK slot row
+      
+      activeTokens = fetch ACTIVE tokens for slot
+      if EMERGENCY:
+          if activeTokens.count >= capacity:
+              lowest = find lowest priority token
+              DISPLACE lowest
+          INSERT emergency token
+      else:
+          if activeTokens.count < capacity:
+              INSERT token
+          else:
+              lowest = find lowest priority token
+              if new.priority > lowest.priority:
+                  DISPLACE lowest
+                  INSERT token
+              else:
+                  REJECT allocation
+      
+      LOG all actions
+      
+      COMMIT
 
 ---
 ## Simulation Flow (Verified Behavior)
@@ -340,8 +340,6 @@ This repository focuses on **correct core behavior** — the hardest part to get
 
 ---
 
-
----
 ## Final Note
 This is not a toy project.
 It is a **correctness-first engine**, built to model real hospital workflows, enforce strict domain rules, and behave predictably under real-world constraints.
