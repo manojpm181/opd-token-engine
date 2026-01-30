@@ -396,3 +396,8 @@ This repository focuses on **correct core behavior** — the hardest part to get
 ## Final Note
 This is not a toy project.
 It is a **correctness-first engine**, built to model real hospital workflows, enforce strict domain rules, and behave predictably under real-world constraints.
+---
+## Author: 
+Manoj PM
+Email: manojpoojari1511@gmail.com
+Phone: +91 9113653069
