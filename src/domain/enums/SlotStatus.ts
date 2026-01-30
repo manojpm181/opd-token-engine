@@ -1,0 +1,6 @@
+export enum SlotStatus {
+  SCHEDULED = "SCHEDULED",
+  DELAYED = "DELAYED",
+  CANCELLED = "CANCELLED",
+  COMPLETED = "COMPLETED",
+}

@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: opd_postgres
+    environment:
+      POSTGRES_USER: opd_user
+      POSTGRES_PASSWORD: opd_pass
+      POSTGRES_DB: opd_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - opd_data:/var/lib/postgresql/data
+
+volumes:
+  opd_data:

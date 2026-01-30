@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//////////////////////
+// ENUMS
+//////////////////////
+
+enum TokenPriority {
+  EMERGENCY
+  PAID
+  FOLLOW_UP
+}
+
+enum TokenSource {
+  ONLINE
+  WALK_IN
+  STAFF
+  APP
+}
+
+enum TokenStatus {
+  ACTIVE
+  CANCELLED
+  NO_SHOW
+  COMPLETED
+  DISPLACED
+}
+
+enum SlotStatus {
+  SCHEDULED
+  DELAYED
+  CANCELLED
+  COMPLETED
+}
+
+//////////////////////
+// MODELS
+//////////////////////
+
+model Doctor {
+  id             String  @id @default(uuid())
+  name           String
+  specialization String?
+  isActive       Boolean @default(true)
+
+  slots  Slot[]
+  tokens Token[]
+
+  createdAt DateTime @default(now())
+}
+
+model Patient {
+  id    String @id @default(uuid())
+  name  String
+  phone String @unique
+
+  tokens Token[]
+
+  createdAt DateTime @default(now())
+}
+
+model Slot {
+  id       String @id @default(uuid())
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id])
+
+  startTime    DateTime
+  endTime      DateTime
+  capacity     Int
+  status       SlotStatus @default(SCHEDULED)
+  delayMinutes Int        @default(0)
+
+  tokens Token[]
+
+  createdAt DateTime @default(now())
+
+  @@index([doctorId, startTime])
+}
+
+model Token {
+  id String @id @default(uuid())
+
+  slotId    String
+  doctorId  String
+  patientId String
+
+  slot    Slot    @relation(fields: [slotId], references: [id])
+  doctor  Doctor  @relation(fields: [doctorId], references: [id])
+  patient Patient @relation(fields: [patientId], references: [id])
+
+  priority       TokenPriority
+  source         TokenSource
+  sequenceNumber Int
+
+  status TokenStatus @default(ACTIVE)
+
+  auditLogs AuditLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slotId, priority, sequenceNumber])
+}
+
+model AuditLog {
+  id String @id @default(uuid())
+
+  tokenId String
+  token   Token  @relation(fields: [tokenId], references: [id])
+
+  action   String
+  metadata Json
+
+  createdAt DateTime @default(now())
+
+  @@index([tokenId, createdAt])
+}

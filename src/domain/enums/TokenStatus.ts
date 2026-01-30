@@ -1,0 +1,7 @@
+export enum TokenStatus {
+  ACTIVE = "ACTIVE",
+  CANCELLED = "CANCELLED",
+  NO_SHOW = "NO_SHOW",
+  COMPLETED = "COMPLETED",
+  DISPLACED = "DISPLACED",
+}
