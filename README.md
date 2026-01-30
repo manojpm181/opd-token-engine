@@ -100,7 +100,6 @@ Prisma ORM
 PostgreSQL
 ```
 
-
 ### Why This Structure?
 
 * Clear separation between HTTP, domain logic, and persistence
@@ -108,7 +107,11 @@ PostgreSQL
 * Database enforces correctness alongside code
 
 ---
+### Architecture Diagram and Flow Chart
+<img width="1075" height="549" alt="Screenshot 2026-01-30 145442" src="https://github.com/user-attachments/assets/7669555f-0c0b-4c7d-88d2-2aaac8a39c6f" />
+<img width="688" height="744" alt="Screenshot 2026-01-30 145557" src="https://github.com/user-attachments/assets/af7bc855-f8c3-43b4-b66e-8fac4160b43a" />
 
+---
 ## FOLDER STRUCTURE
 
       opd-token-engine/
@@ -333,19 +336,35 @@ Verify:
       2. Test endpoints:
       
       Example: Login API
-      - **URL:** `POST /api/login`
-      - **Headers:** `Content-Type: application/json`
-      - **Body:**
+      - URL: `POST http://localhost:3000/simulate/opd-day
+      - Headers: `Content-Type: application/json`
+      - Body:
       
       {
-        "email": "test@example.com",
-        "password": "password123"
+        "email": " ",
+        "password": " "
       }
 
 ---
 ## System Verification & Outputs
-<img width="1551" height="961" alt="Screenshot 2026-01-30 142054" src="https://github.com/user-attachments/assets/705a6b22-50a5-4786-9135-101ae26383aa" />
+1. powershell Invoke-RestMethod 
+<img width="1524" height="369" alt="Screenshot 2026-01-30 142353" src="https://github.com/user-attachments/assets/20011009-fc24-4cb2-b499-2fbf9d0d93f9" />
+http://localhost:5555/  ( Prisma Studio Models)
+<img width="290" height="390" alt="Screenshot 2026-01-30 142239" src="https://github.com/user-attachments/assets/0759c7a4-bddc-4a15-b481-8477121fc8a5" />
+Token
+<img width="1919" height="348" alt="Screenshot 2026-01-30 142308" src="https://github.com/user-attachments/assets/68aa6dba-92d6-452a-90a8-15942d8581ee" />
+Slot
+<img width="1919" height="1024" alt="Screenshot 2026-01-30 142338" src="https://github.com/user-attachments/assets/6cd2333f-f7ce-47c4-963a-3b37f414e7f9" />
+Patient
+<img width="1505" height="663" alt="Screenshot 2026-01-30 142330" src="https://github.com/user-attachments/assets/7925524d-70ba-440f-9511-d2c759c49700" />
+Doctor
+<img width="1919" height="816" alt="Screenshot 2026-01-30 142324" src="https://github.com/user-attachments/assets/083614f2-bce0-49d0-b2bd-61b8340666e5" />
+AuditLog
+<img width="1805" height="733" alt="image" src="https://github.com/user-attachments/assets/d28a6192-3365-4b28-a6bb-47c31f130c19" />
 
+2. Postman Check
+<img width="1367" height="921" alt="image" src="https://github.com/user-attachments/assets/cbb6fc17-0d26-41b7-8983-7b7836016dc6" />
+<img width="1337" height="563" alt="image" src="https://github.com/user-attachments/assets/f9d50b46-ac1f-4acb-badd-18f8168b6189" />
 
 ---
 
